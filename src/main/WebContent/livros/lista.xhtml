@@ -5,15 +5,35 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"> 
       
-      <h:messages />
+      
       
 <h:head>
 	<title>Lista de Livros</title>
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputStylesheet library="css" name="style-admin.css" />
 </h:head> 
 
 <h:body>
 	
-	<h:dataTable var="livro" value="#{adminListaLivrosBean.livros}">
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+	  <div class="container">
+	    <div class="navbar-header">
+	  	  <a class="navbar-brand" href="#">Casa do código</a>
+	  	</div>
+	    <ul class="navbar-nav mr-auto">      
+	      <li class="nav-item"><h:link value="Lista" outcome="lista" /></li>
+	      <li class="nav-item"><a class="nav-link active" href="#">Cadastro</a></li>
+	    </ul>
+	  </div>
+	</nav>
+	
+	<div class="container">
+	<h1>Lista de livros</h1>
+	
+	<h:messages />
+	
+	<h:dataTable var="livro" value="#{adminListaLivrosBean.livros}"
+			class="table table-bordered table-striped table-hover">
 		<h:column>
 			<f:facet name="header">Título</f:facet>
 			#{livro.titulo}
@@ -38,11 +58,11 @@
 		</h:column>
 		<h:column>
 			<f:facet name="header">Capa Path</f:facet>
-			<img src="#{request.contextPath}/file/#{livro.capaPath}" height="150%" width="150%"
+			<img src="#{request.contextPath}/file/#{livro.capaPath}" width="100%"
 			alt="#{livro.titulo}" />
 		</h:column>
-	
 	</h:dataTable>
+	</div>
 	
 </h:body>
 </html>
