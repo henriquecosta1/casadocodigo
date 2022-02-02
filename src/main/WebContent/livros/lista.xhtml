@@ -35,6 +35,7 @@
 	
 	<h:messages />
 	
+	
 	<h:dataTable var="livro" value="#{adminListaLivrosBean.livros}"
 			class="table table-bordered table-striped table-hover">
 		<h:column>
@@ -61,7 +62,7 @@
 		</h:column>
 		<h:column>
 			<f:facet name="header">Capa Path</f:facet>
-			<img src="#{request.contextPath}/file/#{livro.capaPath}" height="10%"
+			<img src="#{request.contextPath}/file/#{livro.capaPath}" heigth="0%"
 			alt="#{livro.titulo}" />
 		</h:column>
 	</h:dataTable>
