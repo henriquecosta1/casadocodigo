@@ -9,7 +9,7 @@
 	>
 
 <f:metadata>
-	<f:viewParam name="id" value="#{livroDetalheBean.id}" />
+	<f:viewParam value="#{livroDetalheBean.id}" name="id" />
 	<f:viewAction action="#{livroDetalheBean.carregaDetalhe()}" />
 </f:metadata>
 
@@ -314,7 +314,7 @@
 </header>
 
 	
-<form action="https://www.casadocodigo.com.br/cart/add" method="POST" class="adicionarAoCarrinho" jsf:id="formComprar">
+<form method="POST" class="adicionarAoCarrinho" jsf:id="formComprar">
 	<ul class="adicionarAoCarrinho-listaOfertas">
 		<li class="adicionarAoCarrinho-oferta" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
 			<label class="adicionarAoCarrinho-infosDaOferta" for="product-variant-2055441665">
