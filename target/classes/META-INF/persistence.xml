@@ -9,6 +9,8 @@
 		<jta-data-source>java:jboss/datasources/casadocodigo</jta-data-source>
 		<class>br.com.casadocodigo.loja.models.Livro</class>
 		<class>br.com.casadocodigo.loja.models.Autor</class>
+		<class>br.com.casadocodigo.loja.models.Usuario</class>
+		<class>br.com.casadocodigo.loja.models.Compra</class>
 		
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/casadocodigo" />
