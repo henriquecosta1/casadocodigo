@@ -13,20 +13,16 @@ import javax.inject.Named;
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 
-import com.sun.faces.facelets.tag.jstl.core.ForEachHandler;
-
 import br.com.casadocodigo.loja.daos.CompraDao;
-import br.com.casadocodigo.loja.daos.UsuarioDao;
 
 @Named
 @SessionScoped
 public class CarrinhoCompras implements Serializable {
-
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Inject	
-	private CompraDao compraDao;
+	private CompraDao compraDao;	
 	
 	private Set<CarrinhoItem> itens = new HashSet<>();
 	
@@ -61,11 +57,11 @@ public class CarrinhoCompras implements Serializable {
 		return itens.stream().mapToInt(item -> item.getQuantidade()).sum();
 	}
 
-	public void finalizar(Usuario usuario) {
-		Compra compra = new Compra();
-		compra.setUsuario(usuario);
+	public void finalizar(Compra compra) {
 		compra.setItens(this.toJson());
-		compraDao.salvar(compra);
+		compra.setTotal(getTotal());
+		compraDao.salvar(compra);	
+		
 	}
 
 	private String toJson() {
