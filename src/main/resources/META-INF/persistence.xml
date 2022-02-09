@@ -3,7 +3,6 @@
 			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 			xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	
-	
 	<persistence-unit name="casadocodigo" transaction-type="JTA">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:jboss/datasources/casadocodigo</jta-data-source>
@@ -12,7 +11,13 @@
 		<class>br.com.casadocodigo.loja.models.Usuario</class>
 		<class>br.com.casadocodigo.loja.models.Compra</class>
 		
+		<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
 		<properties>
+			<property name="hibernate.cache.infinispan.entity.expiration.lifespan"
+					  value="900000" />
+			<property name="hibernate.cache.infinispan.entity.expiration.max_idle"
+					  value="300000" />
+			<property name="hibernate.cache.use_query_cache" value="true" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/casadocodigo" />
 			<property name="javax.persistence.jdbc.user" value="postgres" />
 			<property name="javax.persistence.jdbc.password" value="admin" />

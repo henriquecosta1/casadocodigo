@@ -3,9 +3,14 @@ package br.com.casadocodigo.loja.daos;
 import java.util.List;
 
 import javax.ejb.Stateful;
+import javax.persistence.Cache;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.annotations.QueryHints;
 
 import br.com.casadocodigo.loja.models.Livro;
 
@@ -20,6 +25,15 @@ public class LivroDao {
 
 	}
 	
+	public void limpaCache() {
+		Cache cache = manager.getEntityManagerFactory().getCache();
+		cache.evict(Livro.class);
+		
+		SessionFactory factory = manager.getEntityManagerFactory().unwrap(SessionFactory.class);
+		factory.getCache().evictAllRegions();
+		factory.getCache().evictEntityRegion("home");
+	}
+	
 	public List<Livro> listar() {
 		String jpql = "select distinct(l) from Livro l"
 				+ " join fetch l.autores";
@@ -28,12 +42,19 @@ public class LivroDao {
 
 	public List<Livro> ultimosLancamentos() {
 		String jpql = "select l from Livro l order by l.id desc";
-		return manager.createQuery(jpql, Livro.class).setMaxResults(5).getResultList();
+		return manager.createQuery(jpql, Livro.class)
+				.setMaxResults(5)
+				.setHint(QueryHints.CACHEABLE, true)
+				.setHint(QueryHints.CACHE_REGION, "home")
+				.getResultList();
 	}
 
 	public List<Livro> demaisLivros() {
 		String jpql = "select l from Livro l order by l.id desc";
-		return manager.createQuery(jpql, Livro.class).getResultList();
+		return manager.createQuery(jpql, Livro.class)
+				.setHint(QueryHints.CACHEABLE, true)
+				.setHint(QueryHints.CACHE_REGION, "home")
+				.getResultList();
 	}
 
 	public Livro buscarPorId(Integer id) {
