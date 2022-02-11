@@ -5,7 +5,6 @@ import java.util.List;
 import javax.ejb.Stateful;
 import javax.persistence.Cache;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 

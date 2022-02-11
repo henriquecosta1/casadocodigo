@@ -15,7 +15,7 @@
   </servlet-mapping>
 	
   <context-param>
-  	<param-name>org.omnifaces.CACHE_SETTINGS_APPLICATION_TTL</param-name>
+  	<param-name>org.omnifaces.CACHE_SETTING_APPLICATION_TTL</param-name>
   	<param-value>900</param-value>
   </context-param>
 
