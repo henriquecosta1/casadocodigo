@@ -10,6 +10,8 @@
 		<class>br.com.casadocodigo.loja.models.Autor</class>
 		<class>br.com.casadocodigo.loja.models.Usuario</class>
 		<class>br.com.casadocodigo.loja.models.Compra</class>
+		<class>br.com.casadocodigo.loja.models.SystemUser</class>
+		<class>br.com.casadocodigo.loja.models.SystemRole</class>
 		
 		<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
 		<properties>
