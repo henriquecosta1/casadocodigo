@@ -20,8 +20,8 @@ public class SystemUser {
 	private Integer id;
 	
 	@Email
-	private String email;
-	
+	private String login;
+
 	private String senha;
 	
 	@ManyToMany(fetch=FetchType.EAGER)
@@ -33,6 +33,14 @@ public class SystemUser {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
 	public String getSenha() {
