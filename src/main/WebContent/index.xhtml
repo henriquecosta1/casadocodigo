@@ -411,7 +411,8 @@
 <script>
 	var canalDePromos = new WebSocket("ws://localhost:8080/#{request.contextPath}/canal/promos");
 	canalDePromos.onmessage = function(message) {
-		var novaPromo = JSON.parse(message.data)
+		console.log(message);
+		var novaPromo = JSON.parse(message.data);
 		if (confirm("Que tal aproveitar a promoção relâmpago " + novaPromo.titulo)) {
 			document.location.href="#{request.contextPath}/livro-detalhe.xhtml?id=" + novaPromo.livroId;
 		}
