@@ -24,7 +24,7 @@ public class CarrinhoComprasBean {
 		CarrinhoItem item = new CarrinhoItem(livro);
 		carrinho.add(item);
 		
-		return "carrinho?faces-redirect=true";
+		return "/usuarios/carrinho?faces-redirect=true";
 	}
 	
 	public List<CarrinhoItem> getItens() {

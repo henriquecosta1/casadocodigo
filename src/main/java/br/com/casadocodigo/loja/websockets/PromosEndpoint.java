@@ -39,6 +39,5 @@ public class PromosEndpoint {
 	@OnClose
 	public void onClose(Session session, CloseReason closeReason) {
 		usuarios.remove(session);
-		System.out.println(closeReason.getCloseCode());
 	}
 }

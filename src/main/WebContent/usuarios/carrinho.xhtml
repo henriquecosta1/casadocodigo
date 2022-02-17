@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	
+	<ui:composition template="/templates/_admin_template.xhtml">
+	
+	<ui:param name="carrinho" value="active" />
+
+	<ui:define name="body">
+
+	<title>#{livroDetalheBean.livro.titulo} - H-Tech Library Store</title>
+
+	<link rel="stylesheet" href="#{request.contextPath}/resources/css/reset.css" />
+	<link rel="stylesheet" href="#{request.contextPath}/resources/css/container.css" />
+	<link rel="stylesheet" href="#{request.contextPath}/resources/css/infoSection.css" />
+	
+	<link rel="stylesheet" href="#{request.contextPath}/resources/css/carrinho.css" />
+	<link rel="stylesheet" href="#{request.contextPath}/resources/css/formularioDoCarrinho.css" />
+	
+<main>
+	<section class="infoSection container">
+	<h2 class="infoSection-titulo">Seu carrinho</h2>
+	
+		<form class="formularioDoCarrinho" method="post" jsf:id="formCarrinho">
+			<table class="formularioDoCarrinho-tabela">
+			<thead class="formularioDoCarrinho-cabecalho">
+				<tr>
+					<th></th>
+					<th class="formularioDoCarrinho-cabecalho-item">Item</th>
+					<th class="formularioDoCarrinho-cabecalho-item formularioDoCarrinho-cabecalho-preco">Preço</th>
+					<th class="formularioDoCarrinho-cabecalho-item">Qtd</th>
+					<th class="formularioDoCarrinho-cabecalho-item">Total</th>
+					<th></th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				
+				<ui:repeat value="#{carrinhoCompras.itens}" var="carrinhoItem" varStatus="loop" >
+				<tr>
+					<td class="formularioDoCarrinho-item">
+						<a href="#{request.contextPath}/livro-detalhe.xtml?id=#{carrinhoItem.livro.id}">
+							<img class="formularioDoCarrinho-item-imagem" 
+								src="#{request.contextPath}/file/#{carrinhoItem.livro.capaPath}" />
+						</a>
+					</td>
+					<td class="formularioDoCarrinho-item">
+						<h2 class="formularioDoCarrinho-item-titulo"> #{carrinhoItem.livro.titulo} </h2>
+					</td>
+					<td class="formularioDoCarrinho-item-preco"> R$ #{carrinhoItem.livro.preco} </td>
+					<td class="formularioDoCarrinho-item">
+						<input class="formularioDoCarrinho-item-quantidade"
+							   type="number" min="0" jsf:value="#{carrinhoCompras.itens[loop.index].quantidade}" />
+					</td>
+					<td class="formularioDoCarrinho-item formularioDoCarrinho-item-precoTotal" 
+						title="Preço unitário: R$ #{carrinhoItem.livro.preco}">R$ #{carrinhoCompras.getTotal(carrinhoItem)} </td>
+					<td class="formularioDoCarrinho-item">
+						<a jsf:action="#{carrinhoComprasBean.remover(carrinhoItem)}">
+							<img class="formularioDoCarrinho-item-remover-imagem"  
+								src="#{request.contextPath}/resources/imagens/trash.png" alt="X" title="Remover" />
+						</a>
+					</td>
+				</tr>
+				</ui:repeat>
+				
+			</tbody>
+			<tfoot class="formularioDoCarrinho-rodape">
+				<tr>
+					<td class="formularioDoCarrinho-rodape-item formularioDoCarrinho-finalizar" colspan="3">
+						<button class="formularioDoCarrinho-finalizar-botao" jsf:action="checkout"
+						type="submit">Finalizar<span class="formularioDoCarrinho-finalizar-botao-texto" role="presentation"> compra</span></button>
+					</td>
+					<td class="formularioDoCarrinho-rodape-item">
+						<button class="formularioDoCarrinho-atualizar" 
+						type="submit" jsf:id="btnAtualizar">Atualizar</button>
+					</td>
+					<td class="formularioDoCarrinho-rodape-item">
+						R$ ${carrinhoCompras.getTotal()}
+					</td>
+					<td></td>
+				</tr>
+			</tfoot>
+			</table>
+		</form>
+	
+	</section>
+
+
+</main>
+	
+</ui:define>
+</ui:composition>
+</html>
