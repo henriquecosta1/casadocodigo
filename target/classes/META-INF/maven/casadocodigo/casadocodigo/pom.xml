@@ -3,7 +3,7 @@
   <groupId>casadocodigo</groupId>
   <artifactId>casadocodigo</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>ejb</packaging>
   
   <build>
     <finalName>casadocodigo</finalName>

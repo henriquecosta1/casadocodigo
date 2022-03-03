@@ -12,7 +12,14 @@
 
 	<ui:define name="body">
 	
-	<h1>Enviar Promoção Relâmpago</h1>
+	<link rel="stylesheet" href="#{request.contextPath}/resources/css/reset.css" />
+	<link rel="stylesheet" href="#{request.contextPath}/resources/css/container.css" />
+	<link rel="stylesheet" href="#{request.contextPath}/resources/css/infoSection.css" />
+
+<main>
+	<section class="infoSection container">
+	
+	<h2 class="infoSection-titulo">Enviar Promoção Relâmpago</h2>
 	
 	<h:form enctype="multipart/form-data">
 		<div class="form-group">
@@ -34,7 +41,11 @@
 		
 		<h:commandButton value="Enviar promoção" action="#{adminPromosBean.enviar}" styleClass="btn btn-primary" />
 		
-	</h:form>
+	</h:form>	
+	</section>
+</main>
+
+	
 	</ui:define>
 </ui:composition>
 </html>

@@ -11,7 +11,14 @@
 	<ui:param name="lista" value="active" />
 	<ui:define name="body">
 	
-	<h1>Lista de livros</h1>
+	<link rel="stylesheet" href="#{request.contextPath}/resources/css/reset.css" />
+	<link rel="stylesheet" href="#{request.contextPath}/resources/css/container.css" />
+	<link rel="stylesheet" href="#{request.contextPath}/resources/css/infoSection.css" />
+
+<main>
+	<section class="infoSection container">
+	
+	<h2 class="infoSection-titulo">Lista de livros</h2>
 	
 	<h:messages />
 	
@@ -45,6 +52,9 @@
 			alt="#{livro.titulo}" />
 		</h:column>
 	</h:dataTable>
-	</ui:define>
+	</section>
+	
+</main>
+</ui:define>
 </ui:composition>
 </html>

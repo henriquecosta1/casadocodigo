@@ -17,8 +17,6 @@
 	<!-- inject:css -->
 	<link rel="stylesheet" href="#{request.contextPath}/resources/css/style.css"></link>
 	<!-- endinject -->
-
-<main>
 		
 <o:cache scope="application">
 	<section class="vitrineDestaquinho container">
@@ -60,8 +58,6 @@
 	</section>
 </o:cache>
 
-</main>
-		
 <script>
 	var canalDePromos = new WebSocket("ws://localhost:8080/#{request.contextPath}/canal/promos");
 	canalDePromos.onmessage = function(message) {

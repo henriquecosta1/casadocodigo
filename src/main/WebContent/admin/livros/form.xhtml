@@ -12,7 +12,14 @@
 
 	<ui:define name="body">
 	
-	<h1>Cadastro de livros</h1>
+	<link rel="stylesheet" href="#{request.contextPath}/resources/css/reset.css" />
+	<link rel="stylesheet" href="#{request.contextPath}/resources/css/container.css" />
+	<link rel="stylesheet" href="#{request.contextPath}/resources/css/infoSection.css" />
+
+<main>
+	<section class="infoSection container">
+	
+	<h2 class="infoSection-titulo">Cadastro de livros</h2>
 	
 	<h:form enctype="multipart/form-data">
 		<div class="form-group">
@@ -62,6 +69,9 @@
 		<h:commandButton value="Cadastrar" action="#{adminLivrosBean.salvar}" styleClass="btn btn-primary" />
 		
 	</h:form>
-	</ui:define>
+	</section>
+</main>
+
+</ui:define>
 </ui:composition>
 </html>

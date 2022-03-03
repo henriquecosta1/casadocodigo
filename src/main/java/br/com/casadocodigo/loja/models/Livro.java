@@ -50,9 +50,11 @@ public class Livro {
 	@Min(50)
 	private Integer numeroPaginas;
 	
+	@NotNull
 	@Temporal(TemporalType.DATE)
 	private Calendar dataPublicacao;
 	
+
 	private String capaPath;
 	
 	@ManyToMany

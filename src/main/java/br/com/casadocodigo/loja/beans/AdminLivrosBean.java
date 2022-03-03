@@ -47,7 +47,7 @@ public class AdminLivrosBean {
 		context.getExternalContext().getFlash().setKeepMessages(true);
 		context.addMessage(null, new FacesMessage("Livro cadastrado com sucesso!"));
 		
-		return "admin/livros/lista?faces-redirect=true";
+		return "/admin/livros/lista?faces-redirect=true";
 	}
 	
 	public List<Autor> getAutores() {
